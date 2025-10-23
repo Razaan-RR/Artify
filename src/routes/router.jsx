@@ -7,6 +7,7 @@ import Home from '../pages/Home'
 import Courses from '../pages/Courses'
 import Profile from '../pages/Profile'
 import CourseDetails from '../pages/CourseDetails'
+import ProtectedRoute from '../components/ProtectedRoute'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/courses',
-        element: <Courses></Courses> ,
+        element: <Courses></Courses>,
       },
       {
         path: '/profile',
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/course/:id',
-        element: <CourseDetails></CourseDetails>,
+        element: (
+          <ProtectedRoute>
+            <CourseDetails />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

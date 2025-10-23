@@ -19,7 +19,7 @@ function Profile() {
         {/* User Name */}
         <div className="w-full">
           <h2 className="text-lg font-semibold">Name</h2>
-          <p className="text-gray-700">{user?.displayName || "Not Set"}</p>
+          <p className="text-gray-700">{user?.displayName  || "Not Set"}</p>
         </div>
 
         {/* User Email */}
