@@ -1,0 +1,98 @@
+[
+  {
+    "skillId": 1,
+    "skillName": "Watercolor Basics for Beginners",
+    "providerName": "Emily Carter",
+    "providerEmail": "emily@artify.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Learn how to mix colors, control water, and create beautiful watercolor landscapes.",
+    "image": "https://i.ibb.co.com/jkcfJF3R/watercolor.jpg",
+    "category": "Painting"
+  },
+  {
+    "skillId": 2,
+    "skillName": "Digital Illustration with Procreate",
+    "providerName": "Ryan Mitchell",
+    "providerEmail": "ryan@artify.com",
+    "price": 30,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Master Procreate tools and create vibrant digital art on your iPad step-by-step.",
+    "image": "https://i.ibb.co.com/v47469k9/procreate.jpg",
+    "category": "Digital Art"
+  },
+  {
+    "skillId": 3,
+    "skillName": "Portrait Sketching in Pencil",
+    "providerName": "Hannah Lopez",
+    "providerEmail": "hannah@artify.com",
+    "price": 18,
+    "rating": 4.6,
+    "slotsAvailable": 5,
+    "description": "Learn how to capture human expressions and realistic facial features using pencil shading techniques.",
+    "image": "https://i.ibb.co.com/QFTjBx51/sketch.jpg",
+    "category": "Drawing"
+  },
+  {
+    "skillId": 4,
+    "skillName": "Acrylic Painting: Nature & Landscapes",
+    "providerName": "Liam Brown",
+    "providerEmail": "liam@artify.com",
+    "price": 22,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Explore brush techniques and color blending to create scenic acrylic landscapes.",
+    "image": "https://i.ibb.co.com/23XwpLwj/acrylic.jpg",
+    "category": "Painting"
+  },
+  {
+    "skillId": 5,
+    "skillName": "Clay Sculpture for Beginners",
+    "providerName": "Sophia Kim",
+    "providerEmail": "sophia@artify.com",
+    "price": 28,
+    "rating": 4.5,
+    "slotsAvailable": 4,
+    "description": "Hands-on sculpting lessons to shape expressive figures and forms with clay.",
+    "image": "https://i.ibb.co.com/VWWSHBz6/clay.jpg",
+    "category": "Sculpture"
+  },
+  {
+    "skillId": 6,
+    "skillName": "Calligraphy and Hand Lettering",
+    "providerName": "Noah Davis",
+    "providerEmail": "noah@artify.com",
+    "price": 15,
+    "rating": 4.9,
+    "slotsAvailable": 7,
+    "description": "Develop your handwriting into elegant calligraphy art using brush pens and ink.",
+    "image": "https://i.ibb.co.com/xKFQCSQ3/caligraphy.webp",
+    "category": "Design"
+  },
+  {
+    "skillId": 7,
+    "skillName": "Creative Logo Design Fundamentals",
+    "providerName": "Olivia Brooks",
+    "providerEmail": "olivia@artify.com",
+    "price": 35,
+    "rating": 4.8,
+    "slotsAvailable": 5,
+    "description": "Learn to design professional, memorable logos using Adobe Illustrator and color psychology principles.",
+    "image": "https://i.ibb.co.com/HTY2ZtRH/logo.webp",
+    "category": "Design"
+  },
+  {
+    "skillId": 8,
+    "skillName": "Oil Painting Techniques",
+    "providerName": "Ethan Moore",
+    "providerEmail": "ethan@artify.com",
+    "price": 27,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Explore brush techniques and color blending to create scenic oil painting landscapes.",
+    "image": "https://i.ibb.co.com/SwQ6MvtC/oil-Painting.jpg",
+    "category": "Oil Painting"
+  }
+]
