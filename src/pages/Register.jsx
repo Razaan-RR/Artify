@@ -1,6 +1,7 @@
 import { use } from 'react'
 import { Link } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
+import { updateProfile } from 'firebase/auth'
 
 function Register() {
   const handleGoogleRegister = () => {
@@ -20,12 +21,18 @@ function Register() {
     createUser(email, password)
       .then((result) => {
         const user = result.user
-        setUser(user);
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo })
+            console.log('Profile updated successfully')
+          })
+          .catch((err) => console.log('Profile update error:', err))
       })
       .catch((error) => {
-        const errorMessage = error.message
-        alert(errorMessage)
-        // ..
+        alert(error.message)
       })
   }
   return (

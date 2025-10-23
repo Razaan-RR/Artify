@@ -24,7 +24,7 @@ function HeroSlider() {
       autoplay={{ delay: 3000 }}
       pagination={{ clickable: true }}
       loop={true}
-      className="w-full h-[500px]"
+      className="w-full h-[500px] mt-4"
     >
       {skills.map(skill => (
         <SwiperSlide key={skill.skillId}>
