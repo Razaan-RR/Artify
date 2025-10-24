@@ -1,16 +1,17 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import { AuthContext } from '../provider/AuthProvider'
 import { useContext } from 'react'
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const handleLogOut = () => {
     console.log('user trying to logout')
     logOut()
       .then(() => {
-        alert('You are logged out')
+        navigate('/')
       })
       .catch((error) => {
         console.log(error)
@@ -41,7 +42,9 @@ function Navbar() {
           <>
             <div className="relative group">
               <img
-                src={user.photoURL || 'https://i.ibb.co/4YQ0t6J/default-user.png'}
+                src={
+                  user.photoURL || 'https://i.ibb.co/4YQ0t6J/default-user.png'
+                }
                 alt={user.displayName || 'User'}
                 className="w-12 h-12 rounded-full object-cover cursor-pointer border-2 border-gray-300"
               />

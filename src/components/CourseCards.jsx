@@ -1,7 +1,21 @@
-import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../provider/AuthProvider'
+import toast from 'react-hot-toast'
 
 function CourseCards({ course, index }) {
   const { skillId, skillName, image, price, rating } = course
+  const { user } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleViewDetails = () => {
+    if (!user) {
+      toast.error('You must be logged in to view course details!')
+      navigate('/auth/login', { state: { from: `/course/${skillId}` } })
+      return
+    }
+    navigate(`/course/${skillId}`)
+  }
 
   return (
     <div
@@ -12,6 +26,7 @@ function CourseCards({ course, index }) {
       <Link
         to={`/course/${skillId}`}
         className="card bg-base-100 w-full sm:w-[270px] shadow-sm pb-4"
+        onClick={handleViewDetails}
       >
         <figure className="px-4 pt-4">
           <img

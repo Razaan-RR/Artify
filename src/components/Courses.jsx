@@ -7,13 +7,11 @@ function Courses() {
   const [skills, setSkills] = useState([])
 
   useEffect(() => {
-    // Fetch skills
     fetch('/SkillListings.json')
       .then(res => res.json())
       .then(data => setSkills(data))
       .catch(err => console.log(err))
 
-    // Initialize AOS
     AOS.init({ duration: 800, once: true })
   }, [])
 
