@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import { updateProfile } from 'firebase/auth'
 import toast, { Toaster } from 'react-hot-toast'
+import { getAuth } from 'firebase/auth'
+
+const auth = getAuth()
 
 function Profile() {
-  const { user } = useContext(AuthContext)
+  const { user, setUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const toastShown = useRef(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -13,7 +16,7 @@ function Profile() {
     displayName: user?.displayName || '',
     photoURL: user?.photoURL || '',
   })
-
+  
   useEffect(() => {
     if (!user && !toastShown.current) {
       toastShown.current = true
@@ -26,23 +29,33 @@ function Profile() {
 
   if (!user) return null
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleUpdateProfile = async e => {
+  const handleUpdateProfile = async (e) => {
     e.preventDefault()
     try {
-      await updateProfile(user, {
+      if (!auth.currentUser) throw new Error('No logged in user')
+
+      await updateProfile(auth.currentUser, {
         displayName: formData.displayName,
         photoURL: formData.photoURL,
       })
+
+      // Update user in context so the component re-renders with new info
+      setUser({
+        ...user,
+        displayName: formData.displayName,
+        photoURL: formData.photoURL,
+      })
+
       toast.success('Profile updated successfully!')
       setIsEditing(false)
     } catch (error) {
-      console.error(error)
-      toast.error('Failed to update profile. Try again.')
+      console.error('Firebase updateProfile error:', error.message)
+      toast.error(`Failed to update profile. ${error.message}`)
     }
   }
 
@@ -95,7 +108,9 @@ function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium">Profile Image URL</label>
+              <label className="block text-sm font-medium">
+                Profile Image URL
+              </label>
               <input
                 type="text"
                 name="photoURL"
