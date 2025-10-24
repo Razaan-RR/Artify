@@ -1,21 +1,45 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useLocation } from 'react-router'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import app from '../firebase/firebase.config'
+
+const auth = getAuth(app)
+const provider = new GoogleAuthProvider()
 
 function Login() {
-  const handleGoogleLogin = () => {
-    console.log('Google login clicked')
-    //  Will later integrate Firebase Google Auth
-  }
-
   const { signIn } = useContext(AuthContext)
   const navigate = useNavigate()
+  const [error, setError] = useState('')
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user
+        console.log('Google user:', user)
+        toast.success('Google Login successful!', { position: 'top-center' })
+        navigate(from, { replace: true })
+      })
+      .catch((error) => {
+        console.error('Google login error:', error.message)
+        toast.error('Google login failed. Try again.', {
+          position: 'top-center',
+        })
+      })
+  }
 
   const handleLogin = (e) => {
     e.preventDefault()
     const form = e.target
     const email = form.email.value
     const password = form.password.value
+    setError('')
+
     console.log({ email, password })
     signIn(email, password)
       .then((result) => {
@@ -24,9 +48,11 @@ function Login() {
         navigate('/')
       })
       .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        alert(errorCode, errorMessage)
+        console.error(error.message)
+        setError('Invalid email or password.')
+        toast.error('Login failed. Please check your credentials.', {
+          position: 'top-center',
+        })
       })
   }
 
@@ -54,6 +80,10 @@ function Login() {
               className="input"
               placeholder="Password"
             />
+
+            {error && (
+              <p className="text-red-500 text-sm mt-2 text-center">{error}</p>
+            )}
 
             <div className="text-right mt-1">
               <a className="link link-hover">Forgot password?</a>
@@ -85,6 +115,7 @@ function Login() {
           </fieldset>
         </form>
       </div>
+      <ToastContainer />
     </div>
   )
 }
