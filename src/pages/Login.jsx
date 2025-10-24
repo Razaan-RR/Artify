@@ -1,9 +1,7 @@
 import { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate, useLocation } from 'react-router'
 import { AuthContext } from '../provider/AuthProvider'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { useLocation } from 'react-router'
+import toast, { Toaster } from 'react-hot-toast'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import app from '../firebase/firebase.config'
 
@@ -22,14 +20,12 @@ function Login() {
       .then((result) => {
         const user = result.user
         console.log('Google user:', user)
-        toast.success('Google Login successful!', { position: 'top-center' })
+        toast.success('Google Login successful!')
         navigate(from, { replace: true })
       })
       .catch((error) => {
         console.error('Google login error:', error.message)
-        toast.error('Google login failed. Try again.', {
-          position: 'top-center',
-        })
+        toast.error('Google login failed. Try again.')
       })
   }
 
@@ -40,19 +36,17 @@ function Login() {
     const password = form.password.value
     setError('')
 
-    console.log({ email, password })
     signIn(email, password)
       .then((result) => {
         const user = result.user
-        console.log(user)
+        console.log('Logged in:', user)
+        toast.success('Login successful!')
         navigate('/')
       })
       .catch((error) => {
-        console.error(error.message)
+        console.error('Login error:', error.message)
         setError('Invalid email or password.')
-        toast.error('Login failed. Please check your credentials.', {
-          position: 'top-center',
-        })
+        toast.error('Login failed. Please check your credentials.')
       })
   }
 
@@ -96,6 +90,7 @@ function Login() {
             <div className="divider">OR</div>
             <button
               onClick={handleGoogleLogin}
+              type="button"
               className="btn btn-outline w-full flex items-center justify-center gap-2"
             >
               <img
@@ -115,7 +110,7 @@ function Login() {
           </fieldset>
         </form>
       </div>
-      <ToastContainer />
+      <Toaster position="top-center" />
     </div>
   )
 }
