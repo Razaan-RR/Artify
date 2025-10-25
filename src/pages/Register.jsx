@@ -23,7 +23,7 @@ function Register() {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user
-        console.log('Google user:', user)
+        // console.log('Google user:', user)
         toast.success('Google Sign-up successful!')
         navigate('/', { replace: true })
       })

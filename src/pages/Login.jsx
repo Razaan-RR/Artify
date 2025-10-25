@@ -20,7 +20,7 @@ function Login() {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user
-        console.log('Google user:', user)
+        // console.log('Google user:', user)
         toast.success('Google Login successful!')
         navigate(from, { replace: true })
       })
@@ -40,7 +40,7 @@ function Login() {
     signIn(email, password)
       .then((result) => {
         const user = result.user
-        console.log('Logged in:', user)
+        // console.log('Logged in:', user)
         toast.success('Login successful!')
         navigate('/')
       })
