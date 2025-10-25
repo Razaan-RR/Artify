@@ -6,7 +6,7 @@ Artify is an online art learning platform where users can explore different art 
 ---
 
 ## Live URL
-
+https://stellar-kitsune-e25f81.netlify.app/
 
 ---
 
