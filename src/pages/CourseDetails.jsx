@@ -30,19 +30,23 @@ function CourseDetails() {
   if (!course) return <p>Loading...</p>
 
   return (
-    <div className="max-w-4xl mx-auto my-10 px-4">
+    <div className="max-w-full sm:max-w-4xl mx-auto my-10 px-4 sm:px-6">
       <Toaster />
-      <h1 className="text-3xl font-bold mb-4">{course.skillName}</h1>
-      <img src={course.image} alt={course.skillName} className="rounded-lg mb-4 w-full h-80 object-cover" />
-      <p><strong>Provider:</strong> {course.providerName} ({course.providerEmail})</p>
-      <p><strong>Category:</strong> {course.category}</p>
-      <p><strong>Price:</strong> ${course.price}</p>
-      <p><strong>Rating:</strong> {course.rating} ⭐</p>
-      <p><strong>Slots Available:</strong> {course.slotsAvailable}</p>
-      <p className="my-4">{course.description}</p>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4">{course.skillName}</h1>
+      <img
+        src={course.image}
+        alt={course.skillName}
+        className="rounded-lg mb-4 w-full h-64 sm:h-80 object-cover"
+      />
+      <p className="text-sm sm:text-base"><strong>Provider:</strong> {course.providerName} ({course.providerEmail})</p>
+      <p className="text-sm sm:text-base"><strong>Category:</strong> {course.category}</p>
+      <p className="text-sm sm:text-base"><strong>Price:</strong> ${course.price}</p>
+      <p className="text-sm sm:text-base"><strong>Rating:</strong> {course.rating} ⭐</p>
+      <p className="text-sm sm:text-base"><strong>Slots Available:</strong> {course.slotsAvailable}</p>
+      <p className="my-4 text-sm sm:text-base">{course.description}</p>
 
-      <h2 className="text-2xl font-semibold mb-2">Book Session</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-sm">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-2">Book Session</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-full sm:max-w-sm">
         <input
           name="name"
           type="text"

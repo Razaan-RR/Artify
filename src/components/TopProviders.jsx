@@ -24,11 +24,11 @@ const providers = [
 
 function TopProviders() {
   return (
-    <section className="py-10 px-16">
+    <section className="py-10 px-4 sm:px-16">
       <h2 className="text-2xl font-bold mb-6 text-center">
         Top Rated Providers
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {providers.map((provider) => (
           <div
             key={provider.id}

@@ -16,7 +16,7 @@ function Profile() {
     displayName: user?.displayName || '',
     photoURL: user?.photoURL || '',
   })
-  
+
   useEffect(() => {
     if (!user && !toastShown.current) {
       toastShown.current = true
@@ -44,7 +44,6 @@ function Profile() {
         photoURL: formData.photoURL,
       })
 
-      // Update user in context so the component re-renders with new info
       setUser({
         ...user,
         displayName: formData.displayName,
@@ -60,32 +59,34 @@ function Profile() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+    <div className="max-w-full sm:max-w-3xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg overflow-x-hidden">
       <Toaster position="top-center" />
-      <h1 className="text-3xl font-bold mb-6 text-center">My Profile</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-left sm:text-center">
+        My Profile
+      </h1>
 
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-start sm:items-center gap-4 sm:gap-6">
         <img
           src={user.photoURL || 'https://i.ibb.co/4YQ0t6J/default-user.png'}
           alt={user.displayName || 'User'}
-          className="w-32 h-32 rounded-full object-cover border-2 border-gray-300"
+          className="w-20 h-20 sm:w-32 sm:h-32 rounded-full object-cover border-2 border-gray-300"
         />
 
         {!isEditing ? (
           <>
             <div className="w-full">
-              <h2 className="text-lg font-semibold">Name</h2>
+              <h2 className="text-base sm:text-lg font-semibold">Name</h2>
               <p className="text-gray-700">{user.displayName || 'Not Set'}</p>
             </div>
 
             <div className="w-full">
-              <h2 className="text-lg font-semibold">Email</h2>
-              <p className="text-gray-700">{user.email}</p>
+              <h2 className="text-base sm:text-lg font-semibold">Email</h2>
+              <p className="text-gray-700 break-all">{user.email}</p>
             </div>
 
             <button
               onClick={() => setIsEditing(true)}
-              className="btn btn-primary mt-4 w-full sm:w-1/2"
+              className="btn btn-primary mt-2 sm:mt-4 w-32 sm:w-1/2 text-sm sm:text-base"
             >
               Update Profile
             </button>
@@ -93,7 +94,7 @@ function Profile() {
         ) : (
           <form
             onSubmit={handleUpdateProfile}
-            className="w-full flex flex-col gap-4 mt-4"
+            className="w-full flex flex-col gap-2 sm:gap-4 mt-2 sm:mt-4"
           >
             <div>
               <label className="block text-sm font-medium">Name</label>
@@ -102,33 +103,34 @@ function Profile() {
                 name="displayName"
                 value={formData.displayName}
                 onChange={handleChange}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-sm"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium">
-                Profile Image URL
-              </label>
+              <label className="block text-sm font-medium">Profile Image URL</label>
               <input
                 type="text"
                 name="photoURL"
                 value={formData.photoURL}
                 onChange={handleChange}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-sm"
                 required
               />
             </div>
 
-            <div className="flex gap-4">
-              <button type="submit" className="btn btn-success w-1/2">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full">
+              <button
+                type="submit"
+                className="btn btn-success w-full sm:w-1/2 min-w-0 text-sm"
+              >
                 Save Changes
               </button>
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="btn btn-outline w-1/2"
+                className="btn btn-outline w-full sm:w-1/2 min-w-0 text-sm"
               >
                 Cancel
               </button>

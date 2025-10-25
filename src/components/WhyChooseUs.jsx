@@ -25,11 +25,11 @@ function WhyChooseUs() {
   ]
 
   return (
-    <section className="my-16 px-4 max-w-6xl mx-auto">
+    <section className="my-16 px-4 sm:px-6 max-w-6xl mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
         Why Choose Our Platform
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {features.map((feature, index) => (
           <div key={index} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1">
             <div className="flex justify-center mb-4">{feature.icon}</div>

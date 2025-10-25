@@ -19,13 +19,13 @@ function CourseCards({ course, index }) {
 
   return (
     <div
-      className="cards pt-2 transition-transform duration-300 hover:-translate-y-2 hover:shadow-md"
+      className=" overflow-x-hidden cards pt-2 transition-transform duration-300 hover:-translate-y-2 hover:shadow-md w-full sm:w-auto"
       data-aos="fade-up"
       data-aos-delay={index * 100}
     >
       <Link
         to={`/course/${skillId}`}
-        className="card bg-base-100 w-full sm:w-[270px] shadow-sm pb-4"
+        className="card bg-base-100 w-full sm:w-[270px] h-[400px] shadow-sm flex flex-col pb-4"
         onClick={handleViewDetails}
       >
         <figure className="px-4 pt-4">
