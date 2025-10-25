@@ -58,7 +58,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/*',
-    element: <h2>Error</h2>,
+    element: (
+      <h1 className="text-center text-3xl font-bold mt-60">Error! Page Does Not Exist!!!</h1>
+    ),
   },
 ])
 

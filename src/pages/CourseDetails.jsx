@@ -1,33 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
+import useSkills from '../Hooks/useSkills'
 
 function CourseDetails() {
   const { id } = useParams()
-  const [course, setCourse] = useState(null)
+  const { skills, loading } = useSkills()
   const [formData, setFormData] = useState({ name: '', email: '' })
 
-  useEffect(() => {
-    fetch('/SkillListings.json')
-      .then(res => res.json())
-      .then(data => {
-        const selectedCourse = data.find(c => c.skillId === parseInt(id))
-        setCourse(selectedCourse)
-      })
-      .catch(err => console.log(err))
-  }, [id])
+  const course = skills.find((c) => c.skillId === parseInt(id))
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     toast.success('Session booked successfully!')
     setFormData({ name: '', email: '' })
   }
 
-  if (!course) return <p>Loading...</p>
+  if (loading) return <p>Loading...</p>
+  if (!course) return <p className="text-red-500 text-center mt-10">Course not found</p>
 
   return (
     <div className="max-w-full sm:max-w-4xl mx-auto my-10 px-4 sm:px-6">
@@ -38,15 +32,25 @@ function CourseDetails() {
         alt={course.skillName}
         className="rounded-lg mb-4 w-full h-64 sm:h-80 object-cover"
       />
-      <p className="text-sm sm:text-base"><strong>Provider:</strong> {course.providerName} ({course.providerEmail})</p>
-      <p className="text-sm sm:text-base"><strong>Category:</strong> {course.category}</p>
-      <p className="text-sm sm:text-base"><strong>Price:</strong> ${course.price}</p>
-      <p className="text-sm sm:text-base"><strong>Rating:</strong> {course.rating} ⭐</p>
-      <p className="text-sm sm:text-base"><strong>Slots Available:</strong> {course.slotsAvailable}</p>
+      <p className="text-sm sm:text-base">
+        <strong>Provider:</strong> {course.providerName} ({course.providerEmail})
+      </p>
+      <p className="text-sm sm:text-base">
+        <strong>Category:</strong> {course.category}
+      </p>
+      <p className="text-sm sm:text-base">
+        <strong>Price:</strong> ${course.price}
+      </p>
+      <p className="text-sm sm:text-base">
+        <strong>Rating:</strong> {course.rating} ⭐
+      </p>
+      <p className="text-sm sm:text-base">
+        <strong>Slots Available:</strong> {course.slotsAvailable}
+      </p>
       <p className="my-4 text-sm sm:text-base">{course.description}</p>
 
       <h2 className="text-xl sm:text-2xl font-semibold mb-2">Book Session</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-full sm:max-w-sm">
+      <form className="flex flex-col gap-3 max-w-full sm:max-w-sm" onSubmit={handleSubmit}>
         <input
           name="name"
           type="text"

@@ -43,7 +43,7 @@ function Navbar() {
             <div className="relative group">
               <img
                 src={
-                  user.photoURL || 'https://i.ibb.co/4YQ0t6J/default-user.png'
+                  user.photoURL || 'https://i.ibb.co/1J20DV2P/user.png'
                 }
                 alt={user.displayName || 'User'}
                 className="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-cover cursor-pointer border border-gray-300"

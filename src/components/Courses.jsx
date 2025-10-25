@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import CourseCards from './CourseCards'
+import useSkills from '../Hooks/useSkills'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 function Courses() {
-  const [skills, setSkills] = useState([])
+  const { skills, loading } = useSkills()
 
   useEffect(() => {
-    fetch('/SkillListings.json')
-      .then(res => res.json())
-      .then(data => setSkills(data))
-      .catch(err => console.log(err))
-
     AOS.init({ duration: 800, once: true })
   }, [])
+
+  if (loading) return null 
 
   return (
     <section className="my-10 px-4">
