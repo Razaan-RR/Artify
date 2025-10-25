@@ -4,11 +4,12 @@ import { AuthContext } from '../provider/AuthProvider'
 import { updateProfile } from 'firebase/auth'
 import toast, { Toaster } from 'react-hot-toast'
 import { getAuth } from 'firebase/auth'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const auth = getAuth()
 
 function Profile() {
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser, loading } = useContext(AuthContext)
   const navigate = useNavigate()
   const toastShown = useRef(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -18,14 +19,18 @@ function Profile() {
   })
 
   useEffect(() => {
-    if (!user && !toastShown.current) {
+    if (!loading && !user && !toastShown.current) {
       toastShown.current = true
       toast.error('You must be logged in to access the Profile page.', {
         duration: 3000,
       })
       navigate('/auth/login')
     }
-  }, [user, navigate])
+  }, [user, loading, navigate])
+
+  if (loading) {
+    return <LoadingSpinner />
+  }
 
   if (!user) return null
 
@@ -109,7 +114,9 @@ function Profile() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium">Profile Image URL</label>
+              <label className="block text-sm font-medium">
+                Profile Image URL
+              </label>
               <input
                 type="text"
                 name="photoURL"

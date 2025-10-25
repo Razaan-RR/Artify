@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch('./SkillListings.json'),
+        loader: () => fetch('/SkillListings.json'),
       },
       {
         path: '/courses',
