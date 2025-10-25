@@ -12,6 +12,7 @@ import app from '../firebase/firebase.config'
 
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
+const from = location.state?.from?.pathname || '/'
 
 function Register() {
   const { createUser, setUser } = useContext(AuthContext)
@@ -65,7 +66,7 @@ function Register() {
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo })
             toast.success('Registration successful!')
-            navigate('/')
+            navigate(from, { replace: true })
           })
           .catch((err) => {
             console.error('Profile update error:', err)

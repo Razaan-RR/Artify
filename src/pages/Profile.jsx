@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import { updateProfile } from 'firebase/auth'
 import toast, { Toaster } from 'react-hot-toast'
@@ -17,6 +17,8 @@ function Profile() {
     displayName: user?.displayName || '',
     photoURL: user?.photoURL || '',
   })
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
   useEffect(() => {
     if (!loading && !user && !toastShown.current) {
@@ -24,9 +26,9 @@ function Profile() {
       toast.error('You must be logged in to access the Profile page.', {
         duration: 3000,
       })
-      navigate('/auth/login')
+      navigate('/auth/login', { state: { from }, replace: true })
     }
-  }, [user, loading, navigate])
+  }, [user, loading, navigate, from])
 
   if (loading) {
     return <LoadingSpinner />

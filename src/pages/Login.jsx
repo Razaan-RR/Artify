@@ -42,7 +42,7 @@ function Login() {
         const user = result.user
         // console.log('Logged in:', user)
         toast.success('Login successful!')
-        navigate('/')
+        navigate(from, { replace: true })
       })
       .catch((error) => {
         console.error('Login error:', error.message)
