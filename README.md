@@ -1,6 +1,8 @@
 # Artify – Online Art Learning Site
 
-## Project Purpose
+![App Screenshot](Artify.png)
+
+## Project Description
 
 Artify is an online art learning platform where users can explore different art skills, view details, and book learning sessions. The site includes login, registration, and profile management using Firebase authentication.
 
