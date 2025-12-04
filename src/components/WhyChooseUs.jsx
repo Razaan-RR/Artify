@@ -25,7 +25,7 @@ function WhyChooseUs() {
   ]
 
   return (
-    <section className="my-16 px-4 sm:px-6 max-w-6xl mx-auto">
+    <section className="bg-[#e9edf2] py-16 px-4 sm:px-6 max-w-6xl mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10">
         Why Choose Our Platform
       </h2>

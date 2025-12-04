@@ -5,12 +5,8 @@ import Navbar from '../components/Navbar'
 function HomeLayout() {
   return (
     <div>
-      <header>
-        <Navbar></Navbar>
-      </header>
-      <main>
-        <Outlet />
-      </main>
+      <Navbar></Navbar>
+      <Outlet />
       <Footer></Footer>
     </div>
   )

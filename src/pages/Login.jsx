@@ -52,7 +52,8 @@ function Login() {
   }
 
   return (
-    <div className="flex justify-center items-center">
+    <div className='bg-[#e9edf2]'>
+      <div className="flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-sm shadow-2xl py-5">
         <h2 className="font-semibold text-2xl text-center mb-4">
           Login your account
@@ -171,6 +172,7 @@ function Login() {
         </form>
       </div>
       <Toaster position="top-center" />
+    </div>
     </div>
   )
 }

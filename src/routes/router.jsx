@@ -9,6 +9,9 @@ import Profile from '../pages/Profile'
 import CourseDetails from '../pages/CourseDetails'
 import ProtectedRoute from '../components/ProtectedRoute'
 import ForgotPassword from '../pages/ForgotPassword'
+import AboutUs from '../pages/AboutUs'
+import ContactUs from '../pages/ContactUs'
+import ErrorPage from '../pages/ErrorPage'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile></Profile>,
+      },
+      {
+        path: '/about-us',
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUs></ContactUs>,
       },
       {
         path: '/course/:id',
@@ -58,9 +69,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/*',
-    element: (
-      <h1 className="text-center text-3xl font-bold mt-60">Error! Page Does Not Exist!!!</h1>
-    ),
+    element: <ErrorPage></ErrorPage>,
   },
 ])
 

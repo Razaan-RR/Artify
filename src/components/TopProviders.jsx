@@ -24,7 +24,7 @@ const providers = [
 
 function TopProviders() {
   return (
-    <section className="py-10 px-4 sm:px-16">
+    <section className="bg-[#e9edf2] py-10 px-4 sm:px-16">
       <h2 className="text-2xl font-bold mb-6 text-center">
         Top Rated Providers
       </h2>

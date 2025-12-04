@@ -6,7 +6,7 @@ import WhyChooseUs from '../components/WhyChooseUs'
 
 function Home() {
   return (
-    <div>
+    <div className="bg-[#e9edf2]">
       <HeroSlider></HeroSlider>
       <Courses></Courses>
       <TopProviders></TopProviders>

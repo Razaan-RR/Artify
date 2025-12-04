@@ -14,7 +14,7 @@ function Courses() {
   if (loading) return null 
 
   return (
-    <section className="my-10 px-4">
+    <section className="bg-[#e9edf2] my-10 px-4">
       <h2 className="text-2xl font-bold mb-5 text-center">Popular Skills</h2>
       <div className="flex flex-wrap gap-5 justify-center">
         {skills.map((skill, index) => (

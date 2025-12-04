@@ -24,7 +24,7 @@ function CourseDetails() {
   if (!course) return <p className="text-red-500 text-center mt-10">Course not found</p>
 
   return (
-    <div className="max-w-full sm:max-w-4xl mx-auto my-10 px-4 sm:px-6">
+    <div className="bg-[#e9edf2] max-w-full sm:max-w-4xl mx-auto py-10 px-4 sm:px-6">
       <Toaster />
       <h1 className="text-2xl sm:text-3xl font-bold mb-4">{course.skillName}</h1>
       <img

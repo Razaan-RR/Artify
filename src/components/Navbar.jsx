@@ -19,8 +19,8 @@ function Navbar() {
   }
 
   return (
-    <div className="overflow-hidden px-4 sm:px-6 py-3 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center bg-white shadow-sm space-y-2 sm:space-y-0">
-      <img className="w-[40px] sm:w-[50px]" src={logo} alt="Logo" />
+    <div className="sticky top-0 z-50 bg-[#e9edf2] overflow-hidden px-4 sm:px-6 py-3 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center shadow-sm space-y-2 sm:space-y-0">
+      <img className="w-10 sm:w-[50px]" src={logo} alt="Logo" />
 
       <div className="flex gap-3 sm:gap-5 text-sm sm:text-base">
         <NavLink
@@ -31,9 +31,27 @@ function Navbar() {
         </NavLink>
         <NavLink
           className="text-gray-800 hover:text-blue-500 hover:underline transition-colors duration-200"
+          to="/courses"
+        >
+          All Courses
+        </NavLink>
+        <NavLink
+          className="text-gray-800 hover:text-blue-500 hover:underline transition-colors duration-200"
           to="/profile"
         >
           Profile
+        </NavLink>
+        <NavLink
+          className="text-gray-800 hover:text-blue-500 hover:underline transition-colors duration-200"
+          to="/about-us"
+        >
+          About Us
+        </NavLink>
+        <NavLink
+          className="text-gray-800 hover:text-blue-500 hover:underline transition-colors duration-200"
+          to="/contact-us"
+        >
+          Contact Us
         </NavLink>
       </div>
 
@@ -42,9 +60,7 @@ function Navbar() {
           <>
             <div className="relative group">
               <img
-                src={
-                  user.photoURL || 'https://i.ibb.co/1J20DV2P/user.png'
-                }
+                src={user.photoURL || 'https://i.ibb.co/1J20DV2P/user.png'}
                 alt={user.displayName || 'User'}
                 className="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-cover cursor-pointer border border-gray-300"
               />

@@ -66,7 +66,7 @@ function Profile() {
   }
 
   return (
-    <div className="max-w-full sm:max-w-3xl mx-auto mt-10 p-4 sm:p-6 bg-white shadow-md rounded-lg overflow-x-hidden">
+    <div className="bg-[#e9edf2] max-w-full sm:max-w-3xl mx-auto mt-10 p-4 sm:p-6 shadow-md rounded-lg overflow-x-hidden">
       <Toaster position="top-center" />
       <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-left sm:text-center">
         My Profile
